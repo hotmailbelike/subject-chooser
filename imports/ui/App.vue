@@ -1,17 +1,19 @@
 <template>
 	<div>
-		<h1>Welcome to Meteor!</h1>
-		<Hello />
+		<!-- <Hello /> -->
+		<b-container> </b-container>
 	</div>
 </template>
 
 <script>
-import Hello from './components/Hello.vue';
+// import Hello from './components/Hello.vue';
+import StudentForm from './components/StudentForm';
+import StudentList from './components/StudentList';
+import SubjectList from './components/SubjectList';
+import SubjectForm from './components/SubjectForm';
 
 export default {
-	components: {
-		Hello,
-	},
+	components: {},
 };
 </script>
 
