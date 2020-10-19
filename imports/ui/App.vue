@@ -1,7 +1,12 @@
 <template>
-	<b-container>
+	<b-container class="container mt-4">
 		<!-- <Hello></Hello> -->
+		<h3>Enter Student Details</h3>
 		<StudentForm></StudentForm>
+		<br />
+		<hr />
+		<h3>Enter Subject Details</h3>
+		<SubjectForm></SubjectForm>
 	</b-container>
 </template>
 
@@ -10,12 +15,13 @@
 import StudentForm from './components/StudentForm.vue';
 // import StudentList from './components/StudentList.vue';
 // import SubjectList from './components/SubjectList.vue';
-// import SubjectForm from './components/SubjectForm.vue';
+import SubjectForm from './components/SubjectForm.vue';
 
 export default {
 	components: {
 		// Hello,
 		StudentForm,
+		SubjectForm,
 	},
 };
 </script>
@@ -24,5 +30,8 @@ export default {
 body {
 	font-family: sans-serif;
 	padding: 10px;
+}
+.container {
+	margin-bottom: 10rem;
 }
 </style>

@@ -4,8 +4,14 @@ import { check } from 'meteor/check';
 
 export const Student = new Mongo.Collection('student');
 
+if (Meteor.isServer) {
+	Meteor.publish('students', () => {
+		return Student.find();
+	});
+}
+
 Meteor.methods({
-	'student.insert'(object) {
+	saveStudent(object) {
 		check(object, Object);
 
 		Student.insert({ ...object });

@@ -2,12 +2,8 @@
 	<div>
 		<b-form @submit="onSubmit" v-if="show">
 			<b-form-group id="name" label="Student Name:" label-for="name">
-				<b-form-input
-					id="name"
-					v-model="form.name"
-					required
-					placeholder="Enter name"
-				></b-form-input>
+				<b-form-input id="name" v-model="form.name" required placeholder="Enter name">
+				</b-form-input>
 			</b-form-group>
 
 			<b-form-group id="email" label="Student Email:" label-for="email">
@@ -43,6 +39,8 @@
 </template>
 
 <script>
+import { Meteor } from 'meteor/meteor';
+
 import { Student } from '../../api/Student.model';
 
 export default {
@@ -70,7 +68,13 @@ export default {
 			// 	dob: this.form.dob,
 			// });
 
-			Meteor.call('student.insert', this.form);
+			Meteor.call('saveStudent', this.form, (err, res) => {
+				if (err) {
+					console.log('onSubmit -> err', err);
+				} else {
+					console.log('onSubmit -> res', res);
+				}
+			});
 
 			this.form = {
 				email: '',
