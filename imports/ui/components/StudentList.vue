@@ -14,36 +14,6 @@ export default {
 	data() {
 		return {
 			fields: ['name', 'email', 'contact', 'subjects'],
-			items: [
-				{
-					name: 40,
-					email: 'Dickerson',
-					phone: 'Macdonald',
-					dateOfBirth: 'sad',
-					subjects: ['sad', 'life'],
-				},
-				{
-					name: 21,
-					email: 'Larsen',
-					phone: 'Shaw',
-					dateOfBirth: 'sad',
-					subjects: ['sad', 'life'],
-				},
-				{
-					name: 89,
-					email: 'Geneva',
-					phone: 'Wilson',
-					dateOfBirth: 'sad',
-					subjects: ['sad', 'life'],
-				},
-				{
-					name: 38,
-					email: 'Jami',
-					phone: 'Carney',
-					dateOfBirth: 'sad',
-					subjects: ['sad', 'life'],
-				},
-			],
 		};
 	},
 	meteor: {

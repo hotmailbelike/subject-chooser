@@ -11,6 +11,10 @@
 		<hr />
 		<h3>Student List</h3>
 		<StudentList></StudentList>
+		<br />
+		<hr />
+		<h3>Subject List</h3>
+		<SubjectList></SubjectList>
 	</b-container>
 </template>
 
@@ -18,7 +22,7 @@
 // import Hello from './components/Hello.vue';
 import StudentForm from './components/StudentForm.vue';
 import StudentList from './components/StudentList.vue';
-// import SubjectList from './components/SubjectList.vue';
+import SubjectList from './components/SubjectList.vue';
 import SubjectForm from './components/SubjectForm.vue';
 
 export default {
@@ -27,11 +31,15 @@ export default {
 		StudentForm,
 		SubjectForm,
 		StudentList,
+		SubjectList,
 	},
 };
 </script>
 
 <style>
+h3 {
+	margin-bottom: 2rem;
+}
 body {
 	font-family: sans-serif;
 	padding: 10px;
