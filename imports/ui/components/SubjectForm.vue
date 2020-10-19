@@ -8,6 +8,7 @@
 				label-cols-lg="2"
 			>
 				<b-form-select
+					required
 					id="name"
 					:options="[{ text: 'Choose...', value: null, disabled: true }, ...getStudents]"
 					v-model="selected"
@@ -15,23 +16,20 @@
 			</b-form-group>
 
 			<!-- <label class="mr-sm-2" for="name">Student Name:</label> -->
+			<b-row>
+				<b-col cols="1"><label for="subject">Subjects:</label></b-col>
+				<b-col cols="2" id="subject" v-for="(subject, idx) in form.subjects" :key="idx">
+					<b-form-input
+						class="mb-3 ml-4"
+						v-model="subject.subName"
+						required
+						placeholder="Enter Subject"
+					></b-form-input
+				></b-col>
+			</b-row>
 
-			<label class="mr-sm-2 ml-3" for="subject">Subjects:</label>
-			<div v-for="(subject, idx) in form.subjects" :key="idx">
-				<b-form-input
-					class="my-3"
-					v-model="subject.subName"
-					required
-					placeholder="Enter Subject"
-				></b-form-input>
-			</div>
-
-			<b-button @click="addSub" variant="outline-success" class="mx-2"
-				>Add Another Subject</b-button
-			>
-			<b-button @click="removeSub" variant="outline-danger" class="mx-2"
-				>Remove Last Subject</b-button
-			>
+			<b-button @click="addSub" variant="outline-success">Add Another Subject</b-button>
+			<b-button @click="removeSub" variant="outline-danger">Remove Last Subject</b-button>
 
 			<br />
 			<br />
@@ -51,13 +49,11 @@ export default {
 		return {
 			selected: null,
 			form: {
-				name: '',
 				subjects: [
 					{
 						subName: '',
 					},
 				],
-				// subject: '',
 			},
 		};
 	},
@@ -66,7 +62,26 @@ export default {
 		onSubmit(event) {
 			event.preventDefault();
 
-			console.log('form', this.selected, this.form.subject);
+			Meteor.call(
+				'saveSubject',
+				{ student: this.selected, subjects: this.form.subjects },
+				(err, res) => {
+					if (err) {
+						console.log('onSubmit -> err', err);
+					} else {
+						console.log('onSubmit -> res', res);
+					}
+				}
+			);
+
+			this.selected = null;
+			this.form = {
+				subjects: [
+					{
+						subName: '',
+					},
+				],
+			};
 		},
 		addSub() {
 			this.form.subjects.push({ subName: '' });
@@ -97,5 +112,9 @@ export default {
 #name {
 	width: 40%;
 	margin-left: -60px;
+}
+
+#subject {
+	width: 40%;
 }
 </style>

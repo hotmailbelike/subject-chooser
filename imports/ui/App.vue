@@ -7,13 +7,17 @@
 		<hr />
 		<h3>Enter Subject Details</h3>
 		<SubjectForm></SubjectForm>
+		<br />
+		<hr />
+		<h3>Student List</h3>
+		<StudentList></StudentList>
 	</b-container>
 </template>
 
 <script>
 // import Hello from './components/Hello.vue';
 import StudentForm from './components/StudentForm.vue';
-// import StudentList from './components/StudentList.vue';
+import StudentList from './components/StudentList.vue';
 // import SubjectList from './components/SubjectList.vue';
 import SubjectForm from './components/SubjectForm.vue';
 
@@ -22,6 +26,7 @@ export default {
 		// Hello,
 		StudentForm,
 		SubjectForm,
+		StudentList,
 	},
 };
 </script>
