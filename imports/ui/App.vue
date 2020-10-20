@@ -1,20 +1,40 @@
 <template>
 	<b-container class="container mt-4">
 		<!-- <Hello></Hello> -->
-		<h3>Enter Student Details</h3>
-		<StudentForm></StudentForm>
+		<h3 v-b-toggle.collapse-student-form>Student Form</h3>
+
+		<b-collapse visible id="collapse-student-form">
+			<b-card>
+				<h4>Enter Student Details</h4>
+
+				<StudentForm></StudentForm
+			></b-card>
+		</b-collapse>
 		<br />
 		<hr />
-		<h3>Enter Subject Details</h3>
-		<SubjectForm></SubjectForm>
+		<h3 v-b-toggle.collapse-subject-form>Subject List</h3>
+		<b-collapse id="collapse-subject-form">
+			<b-card
+				><h4>Enter Subject Details</h4>
+				<SubjectForm></SubjectForm
+			></b-card>
+		</b-collapse>
 		<br />
 		<hr />
-		<h3>Student List</h3>
-		<StudentList></StudentList>
+		<h3 v-b-toggle.collapse-student-list>Student List</h3>
+		<b-collapse id="collapse-student-list"
+			><b-card
+				><h4>Student List</h4>
+				<StudentList></StudentList></b-card
+		></b-collapse>
 		<br />
 		<hr />
-		<h3>Subject List</h3>
-		<SubjectList></SubjectList>
+		<h3 v-b-toggle.collapse-subject-list>Subject List</h3>
+		<b-collapse id="collapse-subject-list"
+			><b-card
+				><h4>Subject List</h4>
+				<SubjectList></SubjectList></b-card
+		></b-collapse>
 	</b-container>
 </template>
 
@@ -37,8 +57,9 @@ export default {
 </script>
 
 <style>
-h3 {
-	margin-bottom: 2rem;
+h3,
+h4 {
+	margin-bottom: 1rem;
 }
 body {
 	font-family: sans-serif;
