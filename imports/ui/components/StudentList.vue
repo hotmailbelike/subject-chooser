@@ -24,6 +24,7 @@ export default {
 		},
 		getStudents() {
 			let studs = Student.find({}).fetch();
+
 			let subs = Subject.find({}).fetch();
 
 			studs.forEach((stud) => {
@@ -38,7 +39,7 @@ export default {
 				return;
 			});
 
-			console.log(studs);
+			console.log('getStudents -> studs', studs);
 
 			return studs;
 		},

@@ -20,7 +20,7 @@ import { Subject } from '../../api/Subject.model';
 export default {
 	data() {
 		return {
-			fields: ['Subject', 'Student(s)'],
+			fields: ['subject', 'student'],
 		};
 	},
 	meteor: {
@@ -34,14 +34,30 @@ export default {
 			let subs = Subject.find({}).fetch();
 
 			let uniqueSubjects = subs.map(({ subjects }) => subjects).flat();
-			uniqueSubjects = Array.from(new Set(uniqueSubjects.map(JSON.stringify))).map(
-				JSON.parse
-			);
-			console.log('getSubjects -> uniqueSubjects', uniqueSubjects);
+			uniqueSubjects = Array.from(new Set(uniqueSubjects.map(JSON.stringify)))
+				.map(JSON.parse)
+				.map((sub) => {
+					sub.subject = sub.subName;
+					sub.student = '';
+					delete sub.subName;
+					return sub;
+				});
 
-			let subjects = [];
+			uniqueSubjects.forEach((uniqueSub) => {
+				let { subject } = uniqueSub;
+				subs.forEach(({ subjects, student }) => {
+					subjects.forEach(({ subName }) => {
+						if (subject === subName) {
+							uniqueSub.student += student + ', ';
+						}
+					});
+				});
+				uniqueSub.student = uniqueSub.student.slice(0, uniqueSub.student.length - 2);
+			});
 
-			return studs;
+			// console.log('getSubjects -> uniqueSubjects', uniqueSubjects);
+
+			return uniqueSubjects;
 		},
 	},
 };
