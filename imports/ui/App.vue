@@ -1,7 +1,15 @@
 <template>
 	<b-container class="container mt-4">
 		<!-- <Hello></Hello> -->
-		<h3 v-b-toggle.collapse-student-form>Student Form</h3>
+		<h3 @click="setShowStudentForm" v-b-toggle.collapse-student-form>
+			Student Form
+			<b-icon
+				v-if="showStudentForm"
+				icon="arrow-down-circle-fill"
+				variant="success"
+			></b-icon>
+			<b-icon v-else icon="arrow-right-circle-fill" variant="success"></b-icon>
+		</h3>
 
 		<b-collapse visible id="collapse-student-form">
 			<b-card>
@@ -12,7 +20,16 @@
 		</b-collapse>
 		<br />
 		<hr />
-		<h3 v-b-toggle.collapse-subject-form>Subject List</h3>
+		<h3 @click="setShowSubjectForm" v-b-toggle.collapse-subject-form>
+			Subject Form
+			<b-icon
+				v-if="showSubjectForm"
+				icon="arrow-down-circle-fill"
+				variant="success"
+			></b-icon>
+			<b-icon v-else icon="arrow-right-circle-fill" variant="success"></b-icon>
+		</h3>
+
 		<b-collapse id="collapse-subject-form">
 			<b-card
 				><h4>Enter Subject Details</h4>
@@ -21,7 +38,16 @@
 		</b-collapse>
 		<br />
 		<hr />
-		<h3 v-b-toggle.collapse-student-list>Student List</h3>
+		<h3 @click="setShowStudentList" v-b-toggle.collapse-student-list>
+			Student List
+			<b-icon
+				v-if="showStudentList"
+				icon="arrow-down-circle-fill"
+				variant="success"
+			></b-icon>
+			<b-icon v-else icon="arrow-right-circle-fill" variant="success"></b-icon>
+		</h3>
+
 		<b-collapse id="collapse-student-list"
 			><b-card
 				><h4>Student List</h4>
@@ -29,7 +55,16 @@
 		></b-collapse>
 		<br />
 		<hr />
-		<h3 v-b-toggle.collapse-subject-list>Subject List</h3>
+		<h3 @click="setShowSubjectList" v-b-toggle.collapse-subject-list>
+			Subject List
+			<b-icon
+				v-if="showSubjectList"
+				icon="arrow-down-circle-fill"
+				variant="success"
+			></b-icon>
+			<b-icon v-else icon="arrow-right-circle-fill" variant="success"></b-icon>
+		</h3>
+
 		<b-collapse id="collapse-subject-list"
 			><b-card
 				><h4>Subject List</h4>
@@ -46,6 +81,28 @@ import SubjectList from './components/SubjectList.vue';
 import SubjectForm from './components/SubjectForm.vue';
 
 export default {
+	data() {
+		return {
+			showStudentForm: true,
+			showSubjectForm: false,
+			showStudentList: false,
+			showSubjectList: false,
+		};
+	},
+	methods: {
+		setShowStudentForm() {
+			this.showStudentForm = !this.showStudentForm;
+		},
+		setShowSubjectForm() {
+			this.showSubjectForm = !this.showSubjectForm;
+		},
+		setShowStudentList() {
+			this.showStudentList = !this.showStudentList;
+		},
+		setShowSubjectList() {
+			this.showSubjectList = !this.showSubjectList;
+		},
+	},
 	components: {
 		// Hello,
 		StudentForm,
